@@ -8,20 +8,21 @@ using BlockTower.Config;
 [RequireComponent(typeof(CanvasGroup))]
 public class Cube : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
-    public bool IsPlaced { get; set; }
-    public string CubeId => _cubeId;
     [SerializeField] private float disappearDuration = 0.3f;
 
-    private RectTransform rectTransform;
-    private CanvasGroup canvasGroup;
-    private Vector2 startPosition;
-    private GameObject draggedCopy;
-    private bool dropSuccess = false;
-    private bool heightLimitReached = false;  
+    private RectTransform _rectTransform;
+    private CanvasGroup _canvasGroup;
+    private Vector2 _startPosition;
+    private GameObject _draggedCopy;
+    private bool _dropSuccess;
+    private bool _heightLimitReached;
     private string _cubeId;
 
     [Inject] private NotificationService _notificationService;
-    [Inject] private Canvas _canvas; 
+    [Inject] private Canvas _canvas;
+
+    public bool IsPlaced { get; set; }
+    public string CubeId => _cubeId; 
 
     [Inject]
     public void Initialize(CubeConfig config, Transform parent)
@@ -32,8 +33,8 @@ public class Cube : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
 
     private void Awake()
     {
-        rectTransform = GetComponent<RectTransform>();
-        canvasGroup = GetComponent<CanvasGroup>();
+        _rectTransform = GetComponent<RectTransform>();
+        _canvasGroup = GetComponent<CanvasGroup>();
     }
     
 
@@ -72,21 +73,21 @@ public class Cube : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
 
     public void OnBeginDrag(PointerEventData eventData)
     {     
-        startPosition = rectTransform.anchoredPosition;
+        _startPosition = _rectTransform.anchoredPosition;
          
         if (!IsPlaced)
         {
-            draggedCopy = Instantiate(gameObject, transform.parent.parent);
-            draggedCopy.transform.position = transform.position;
+            _draggedCopy = Instantiate(gameObject, transform.parent.parent);
+            _draggedCopy.transform.position = transform.position;
             
-            var copyCube = draggedCopy.GetComponent<Cube>();
+            var copyCube = _draggedCopy.GetComponent<Cube>();
             if (copyCube != null)
             {
                 copyCube.SetCanvas(_canvas);
                 copyCube.SetCubeId(_cubeId);
             }
             
-            CanvasGroup copyCanvasGroup = draggedCopy.GetComponent<CanvasGroup>();
+            CanvasGroup copyCanvasGroup = _draggedCopy.GetComponent<CanvasGroup>();
             if (copyCanvasGroup != null)
             {
                 copyCanvasGroup.alpha = 0.6f;
@@ -95,8 +96,8 @@ public class Cube : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
         }
         else
         {
-            canvasGroup.alpha = 0.6f;
-            canvasGroup.blocksRaycasts = false;
+            _canvasGroup.alpha = 0.6f;
+            _canvasGroup.blocksRaycasts = false;
         }         
     }
 
@@ -104,9 +105,9 @@ public class Cube : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
     {
         if (!IsPlaced)
         {   
-            if (draggedCopy != null)
+            if (_draggedCopy != null)
             {
-                RectTransform copyRectTransform = draggedCopy.GetComponent<RectTransform>();
+                RectTransform copyRectTransform = _draggedCopy.GetComponent<RectTransform>();
                 if (copyRectTransform != null)
                 {
                     copyRectTransform.anchoredPosition += eventData.delta / _canvas.scaleFactor;
@@ -115,9 +116,9 @@ public class Cube : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
         }
         else
         {
-            if (rectTransform != null)
+            if (_rectTransform != null)
             {
-                rectTransform.anchoredPosition += eventData.delta / _canvas.scaleFactor;
+                _rectTransform.anchoredPosition += eventData.delta / _canvas.scaleFactor;
             }
         }
     }
@@ -126,15 +127,15 @@ public class Cube : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
     {
         if (!IsPlaced)
         {
-            if (!dropSuccess)
+            if (!_dropSuccess)
             {
-                if (draggedCopy != null)
+                if (_draggedCopy != null)
                 {
-                    AnimateDisappear(draggedCopy);
-                    draggedCopy = null;
+                    AnimateDisappear(_draggedCopy);
+                    _draggedCopy = null;
                 }
                 
-                if (!heightLimitReached && _notificationService != null)
+                if (!_heightLimitReached && _notificationService != null)
                 {
                     _notificationService.NotifyCubeDisappeared();
                 }
@@ -142,27 +143,27 @@ public class Cube : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
         }
         else
         {
-            if (!dropSuccess)
+            if (!_dropSuccess)
             {
-                rectTransform.anchoredPosition = startPosition;
+                _rectTransform.anchoredPosition = _startPosition;
             }
 
-            canvasGroup.alpha = 1f;
-            canvasGroup.blocksRaycasts = true;
+            _canvasGroup.alpha = 1f;
+            _canvasGroup.blocksRaycasts = true;
         }
         
-        dropSuccess = false;
-        heightLimitReached = false;
+        _dropSuccess = false;
+        _heightLimitReached = false;
     }
 
     public void OnHeightLimitReached()
     {
-        heightLimitReached = true;
+        _heightLimitReached = true;
     }
 
     public GameObject GetDraggedCopy()
     {
-        return draggedCopy;
+        return _draggedCopy;
     }
 
     public void SetCanvas(Canvas canvas)
@@ -172,7 +173,7 @@ public class Cube : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
 
     public void OnDropSuccess()
     {
-        dropSuccess = true;
+        _dropSuccess = true;
     }
 
     public void SetCubeId(string cubeId)
