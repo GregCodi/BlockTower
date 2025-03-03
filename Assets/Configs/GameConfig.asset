@@ -1,0 +1,77 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f095a72da109aab449f67763fee2058c, type: 3}
+  m_Name: GameConfig
+  m_EditorClassIdentifier: Assembly-CSharp:BlockTower.Config:ScriptableObjectConfigProvider
+  config:
+    initialCubeCount: 5
+    availableCubes:
+    - cubeSprite: {fileID: 21300000, guid: 0ad3ca2baaacee14999ec5b5d21906fa, type: 3}
+      cubeColor: {r: 1, g: 1, b: 1, a: 1}
+      cubeId: cube_0
+    - cubeSprite: {fileID: 21300000, guid: 42ccf7c3449d3cf48b14004330743b27, type: 3}
+      cubeColor: {r: 1, g: 1, b: 1, a: 1}
+      cubeId: cube_1
+    - cubeSprite: {fileID: 21300000, guid: 786b3262c2d7cc24ba1e71443b5e7bc2, type: 3}
+      cubeColor: {r: 1, g: 1, b: 1, a: 1}
+      cubeId: cube_2
+    - cubeSprite: {fileID: 21300000, guid: d09c40f2d2dc96d4795b620994108f9a, type: 3}
+      cubeColor: {r: 1, g: 1, b: 1, a: 1}
+      cubeId: cube_3
+    - cubeSprite: {fileID: 21300000, guid: f91ac540afe990c47b160ed4c1088538, type: 3}
+      cubeColor: {r: 1, g: 1, b: 1, a: 1}
+      cubeId: cube_4
+    - cubeSprite: {fileID: 21300000, guid: f6148a04d8345e647845300b8820c43f, type: 3}
+      cubeColor: {r: 1, g: 1, b: 1, a: 1}
+      cubeId: cube_5
+    - cubeSprite: {fileID: 21300000, guid: 9525426349b29b040a0f78fda497fa0b, type: 3}
+      cubeColor: {r: 1, g: 1, b: 1, a: 1}
+      cubeId: cube_6
+    - cubeSprite: {fileID: 21300000, guid: fce97e8ad0004f248b24549edc83176c, type: 3}
+      cubeColor: {r: 1, g: 1, b: 1, a: 1}
+      cubeId: cube_7
+    - cubeSprite: {fileID: 21300000, guid: d301fd16aced7e64a8d9abea0dc9a585, type: 3}
+      cubeColor: {r: 1, g: 1, b: 1, a: 1}
+      cubeId: cube_8
+    - cubeSprite: {fileID: 21300000, guid: 04cc5aade95afa645a4ee037ca8d763f, type: 3}
+      cubeColor: {r: 1, g: 1, b: 1, a: 1}
+      cubeId: cube_9
+    - cubeSprite: {fileID: 21300000, guid: 39099de2f9acc20459e367191569f091, type: 3}
+      cubeColor: {r: 1, g: 1, b: 1, a: 1}
+      cubeId: cube_10
+    - cubeSprite: {fileID: 21300000, guid: 0cc4d9a42a54313439de0a263f7a34a9, type: 3}
+      cubeColor: {r: 1, g: 1, b: 1, a: 1}
+      cubeId: cube_11
+    - cubeSprite: {fileID: 21300000, guid: f3412ae58cc291a4abdfbfcd6834a4ce, type: 3}
+      cubeColor: {r: 1, g: 1, b: 1, a: 1}
+      cubeId: cube_12
+    - cubeSprite: {fileID: 21300000, guid: 9121fe64e91cc4e4dba81ae9172eaa2b, type: 3}
+      cubeColor: {r: 1, g: 1, b: 1, a: 1}
+      cubeId: cube_13
+    - cubeSprite: {fileID: 21300000, guid: 5127d31ef49f3774d84460888304cb59, type: 3}
+      cubeColor: {r: 1, g: 1, b: 1, a: 1}
+      cubeId: cube_14
+    - cubeSprite: {fileID: 21300000, guid: 9362fb8c16c7b8040ab4d74b8a1356c3, type: 3}
+      cubeColor: {r: 1, g: 1, b: 1, a: 1}
+      cubeId: cube_15
+    - cubeSprite: {fileID: 21300000, guid: 0711bf05e4042fd48b92126e5aa91481, type: 3}
+      cubeColor: {r: 1, g: 1, b: 1, a: 1}
+      cubeId: cube_16
+    - cubeSprite: {fileID: 21300000, guid: 48aea81843d68f942b99cdeb03e60214, type: 3}
+      cubeColor: {r: 1, g: 1, b: 1, a: 1}
+      cubeId: cube_17
+    - cubeSprite: {fileID: 21300000, guid: 958d9b6b2a68c3342901797f9ad89574, type: 3}
+      cubeColor: {r: 1, g: 1, b: 1, a: 1}
+      cubeId: cube_18
+    - cubeSprite: {fileID: 21300000, guid: ff8e9ea30e7b38149bdbf90f8f53a8a1, type: 3}
+      cubeColor: {r: 1, g: 1, b: 1, a: 1}
+      cubeId: cube_19
